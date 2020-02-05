@@ -36,8 +36,20 @@ $ composer require crojasaragonez/utn-db
 ## Usage
 
 ``` php
-$skeleton = new crojasaragonez\utn-db();
-echo $skeleton->echoPhrase('Hello, League!');
+require_once 'vendor/autoload.php';
+
+use crojasaragonez\UtnDb\PgConnection;
+
+$con = new PgConnection('postgres', '12345', 'pmo', 5432, 'localhost');
+$con->connect();
+$sql = "INSERT INTO projects(name, description, start_date, end_date) VALUES ($1, $2, $3, $4)";
+$con->runStatement($sql, ['Project 1', 'project description', '2020-01-01', '2020-01-02']);
+
+$results = $con->runQuery('SELECT * FROM projects WHERE id >= $1', [1]);
+
+var_dump($results);
+
+$con->disconnect();
 ```
 
 ## Change log
