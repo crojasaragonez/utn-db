@@ -1,7 +1,7 @@
 {
     "name": "crojasaragonez/utn-db",
     "type": "library",
-    "description": "Simple database access class for UTN students",
+    "description": "Simple database access package for UTN students",
     "keywords": [
         "crojasaragonez",
         "UtnDb"
